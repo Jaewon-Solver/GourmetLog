@@ -1,32 +1,57 @@
-# GourmetLog
-Project for Intelligent Web Design
+# 🍽️ GourmetLog (나만의 맛집 기록 서비스)
 
-**Tree**
+**GourmetLog**는 사용자가 방문한 맛집의 정보를 사진, 위치, 평점, 메모와 함께 저장하고 관리할 수 있는 JSP 기반의 웹 애플리케이션입니다. Eclipse와 Apache Tomcat 환경에서 개발되었으며 MySQL 데이터베이스를 연동하여 데이터를 관리합니다.
+
+## 📋 주요 기능 (Features)
+
+* **맛집 등록 (Create):** 상호명, 가격, 위치, 메모를 입력하고 이미지를 업로드하여 맛집을 등록합니다.
+* **유효성 검사 (Validation):** JavaScript를 활용하여 필수 입력값 및 가격(숫자) 형식을 검증합니다.
+* **맛집 목록 및 상세 조회 (Read):** 저장된 맛집 리스트를 카드 형태로 확인하고, 상세 정보를 조회합니다.
+* **맛집 삭제 (Delete):** 등록된 맛집 정보를 DB에서 영구적으로 삭제합니다.
+* **다국어 지원 (i18n):** 한국어/영어 전환 기능을 제공합니다 (JSTL `fmt` 태그 활용).
+* **최근 본 맛집 (Cookie):** 상세 페이지 조회 시 쿠키를 생성하여 최근 본 내역을 저장합니다.
+* **이미지 업로드:** `cos.jar` 라이브러리를 사용하여 서버에 이미지를 저장합니다.
+
+## 🛠️ 기술 스택 (Tech Stack)
+
+* **Language:** Java (JSP, Servlet)
+* **Database:** MySQL 8.0
+* **Server:** Apache Tomcat 9.0
+* **Frontend:** HTML5, CSS3 (Bootstrap 5), JavaScript
+* **IDE:** Eclipse IDE for Enterprise Java and Web Developers
+* **Libraries:**
+    * `mysql-connector-java` (DB Connection)
+    * `jstl` (JSP Standard Tag Library)
+    * `cos.jar` (File Upload)
+
+## 📂 디렉터리 구조 (Directory Structure)
+
+```text
 GourmetLog/
 ├── src/
 │   └── main/java/
 │       ├── dao/
-│       │   └── RestaurantRepository.java  (DB 연동 CRUD 담당)
+│       │   └── RestaurantRepository.java  # DB 연동 및 CRUD 로직 (Singleton 패턴)
 │       ├── dto/
-│       │   └── Restaurant.java            (데이터 객체 - 금액, 위치, 메모 포함)
+│       │   └── Restaurant.java            # 데이터 전송 객체 (Getter/Setter)
 │       └── util/
-│           └── DatabaseUtil.java          (DB 연결 헬퍼 클래스)
+│           └── DatabaseUtil.java          # DB 연결 헬퍼 클래스
 ├── src/
 │   └── main/resources/
-│       ├── message_ko.properties          (다국어 - 한국어)
-│       └── message_en.properties          (다국어 - 영어)
-├── WebContent/ (또는 src/main/webapp/)
+│       ├── message_ko.properties          # 다국어 리소스 (한국어)
+│       └── message_en.properties          # 다국어 리소스 (영어)
+├── WebContent/ (src/main/webapp/)
 │   ├── resources/
-│   │   ├── css/
-│   │   ├── images/                        (업로드된 이미지 저장소)
+│   │   ├── css/                           # 스타일시트 (Bootstrap 등)
+│   │   ├── images/                        # 업로드된 음식 사진 저장소
 │   │   └── js/
-│   │       └── validation.js              (유효성 검사)
+│   │       └── validation.js              # 입력 폼 유효성 검사 스크립트
 │   ├── WEB-INF/
-│   │   └── lib/                           (mysql-connector, cos.jar, jstl.jar 필요)
-│   ├── menu.jsp                           (상단 메뉴 - 세션 로그인 체크)
-│   ├── footer.jsp
-│   ├── restaurants.jsp                    (맛집 목록)
-│   ├── restaurant.jsp                     (상세 보기 - 쿠키 생성)
-│   ├── addRestaurant.jsp                  (등록 폼 - 다국어 적용)
-│   ├── processAddRestaurant.jsp           (파일 업로드 및 DB 저장 처리)
-│   └── deleteRestaurant.jsp               (삭제 처리)
+│   │   └── lib/                           # 필수 라이브러리 (jar 파일 위치)
+│   ├── menu.jsp                           # 공통 네비게이션 바 (세션 처리 포함)
+│   ├── footer.jsp                         # 공통 푸터
+│   ├── restaurants.jsp                    # 맛집 목록 페이지
+│   ├── restaurant.jsp                     # 맛집 상세 페이지 (쿠키 생성)
+│   ├── addRestaurant.jsp                  # 맛집 등록 폼 (다국어 적용)
+│   ├── processAddRestaurant.jsp           # 등록 처리 (MultipartRequest, DB Insert)
+│   └── deleteRestaurant.jsp               # 삭제 처리 로직
