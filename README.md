@@ -34,16 +34,15 @@ GourmetLog/
 │       │   └── RestaurantRepository.java  # DB 연동 및 CRUD 로직 (Singleton 패턴)
 │       ├── dto/
 │       │   └── Restaurant.java            # 데이터 전송 객체 (Getter/Setter)
-│       └── util/
-│           └── DatabaseUtil.java          # DB 연결 헬퍼 클래스
 ├── src/
 │   └── main/resources/
 │       ├── message_ko.properties          # 다국어 리소스 (한국어)
 │       └── message_en.properties          # 다국어 리소스 (영어)
-├── WebContent/ (src/main/webapp/)
+├── src/main/webapp/
 │   ├── resources/
 │   │   ├── css/                           # 스타일시트 (Bootstrap 등)
-│   │   ├── images/                        # 업로드된 음식 사진 저장소
+│   │   ├── images/
+             └── test.png                  # 업로드된 음식 사진 저장소
 │   │   └── js/
 │   │       └── validation.js              # 입력 폼 유효성 검사 스크립트
 │   ├── WEB-INF/
