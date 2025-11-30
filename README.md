@@ -15,8 +15,8 @@
 ## 🛠️ 기술 스택 (Tech Stack)
 
 * **Language:** Java (JSP, Servlet)
-* **Database:** MySQL 8.0
-* **Server:** Apache Tomcat 9.0
+* **Database:** MySQL 8.0.33
+* **Server:** Apache Tomcat 10.1
 * **Frontend:** HTML5, CSS3 (Bootstrap 5), JavaScript
 * **IDE:** Eclipse IDE for Enterprise Java and Web Developers
 * **Libraries:**
